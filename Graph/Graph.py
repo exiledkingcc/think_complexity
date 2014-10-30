@@ -109,9 +109,23 @@ class Graph(dict):
         vs=self.vertices()
         for i in range(len(vs)):
             for j in range(i+1,len(vs)):
-                e=Edge(vs[i],vs[j])
-                self[vs[i]][vs[j]]=e
-                self[vs[j]][vs[i]]=e
+                self.add_edge( Edge(vs[i],vs[j]) )
+
+    def add_regular_edges(self,k):
+        " k*v==2e "
+        vs=self.vertices()
+        v=len(vs)
+        if k<=1 or k>=v or (k*v)%2!=0:
+            raise ValueError("not possible for regular")
+        kk=k//2
+        for i in range(v):
+            for j in range(1,kk+1):
+                self.add_edge( Edge(vs[i],vs[(i+j)%v]) )
+                self.add_edge( Edge(vs[i],vs[i-j]) )
+        if k%2!=0:
+            dis=v//2
+            for i in range(v):
+                self.add_edge( Edge(vs[i],vs[i-dis]) )
 
 
 def main(script, *args):
