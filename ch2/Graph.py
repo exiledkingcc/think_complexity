@@ -111,6 +111,9 @@ class Graph(dict):
             for j in range(i+1,len(vs)):
                 self.add_edge( Edge(vs[i],vs[j]) )
 
+    def remove_all_edges(self):
+        for v in self : self[v]={}
+
     def add_regular_edges(self,k):
         " k*v==2e "
         vs=self.vertices()
@@ -126,6 +129,21 @@ class Graph(dict):
             dis=v//2
             for i in range(v):
                 self.add_edge( Edge(vs[i],vs[i-dis]) )
+
+    def is_connected(self):
+        vs=self.vertices()
+        if len(vs)<=1 : return True
+        op=[vs[0]]; cl=[vs[0]]
+        while len(op)!=0:
+            for i in self[op[0]]:
+                if i not in cl:
+                    cl.append(i)
+                    op.append(i)
+            op=op[1::]
+        if len(vs)==len(cl):
+            return True
+        else:
+            return False
 
 
 def main(script, *args):
