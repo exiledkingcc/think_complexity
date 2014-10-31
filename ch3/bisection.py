@@ -1,6 +1,7 @@
 """
 bisection: binary search
 """
+
 import random
 
 def bisection(seq, item):
