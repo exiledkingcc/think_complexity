@@ -69,7 +69,9 @@ class TreeMap(object):
 			self.root=z
 			return
 		elif z.key==y.key:
-			raise KeyError("key alreay exists")
+			#raise KeyError("key alreay exists")
+			z.value=v
+			return
 		elif z.key<y.key:
 			y.left=z
 		else : y.right=z
@@ -135,10 +137,7 @@ def main(script, n='100', *args):
 	n=int(n)
 	m=TreeMap()
 	for i in range(n):
-		try:
-			m.add(random.randint(0,100),random.randint(0,100))
-		except KeyError:
-			pass
+		m.add(random.randint(0,100),random.randint(0,100))
 	m.level_print()
 
 if __name__ == '__main__':
