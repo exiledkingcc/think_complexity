@@ -1,6 +1,4 @@
-"""
-bisection: binary search
-"""
+"""bisection: binary search"""
 
 import random
 
@@ -14,7 +12,7 @@ def bisection(seq, item):
             low=mid+1
         else:
             return mid
-    return -1
+    return None
 
 def test(script,a='1',b='20',*args):
     a=int(a)
