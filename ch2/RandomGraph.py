@@ -1,7 +1,5 @@
 
-from Graph import Edge
-from Graph import Vertex
-from Graph import Graph
+from Graph import Edge,Vertex,Graph
 
 class RandomGraph(Graph):
     

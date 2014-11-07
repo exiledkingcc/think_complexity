@@ -96,14 +96,14 @@ class Graph(dict):
             vs=self[v]
         except KeyError:
             return None
-        return list(vs.keys())
+        return vs.keys()
 
     def out_edges(self,v):
         try:
             vs=self[v]
         except KeyError:
             return None
-        return list(vs.values())
+        return vs.values()
 
     def add_all_edges(self):
         vs=self.vertices()
